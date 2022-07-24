@@ -13,13 +13,16 @@ class Runner(val mongoTemplate: MongoTemplate, val kafkaTemplate: KafkaTemplate<
     override fun run(vararg args: String?) {
         val query = Query()// some query that pulls a lot of results
 
-        for (widget in mongoTemplate.stream<Widget>(query)) {
+
+        mongoTemplate.stream<Widget>(query).use {
+            for (widget in it) {
 
 
-            //transformation logic might go here
+                //transformation logic might go here
 
 
-            kafkaTemplate.sendDefault(widget)
+                kafkaTemplate.sendDefault(widget)
+            }
         }
     }
 }

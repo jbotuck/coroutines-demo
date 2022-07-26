@@ -1,1 +1,1 @@
-kotlin fun
+Each commit in this repo  (excluding this readme commit and the initial commit) is a different state in the demo. `coroutines` branch has most of the relevant commits and the end state.  `sync` branch has an alternative state
